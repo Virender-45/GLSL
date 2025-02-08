@@ -14,7 +14,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a GLFW window with width 600, height 600, and title "Rana"
-	GLFWwindow* window = glfwCreateWindow(600, 600, "Rana", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(600, 600, "Virender", NULL, NULL);
 
 	// Check if window creation was successful
 	if (window == NULL) {
