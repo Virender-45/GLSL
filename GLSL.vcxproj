@@ -149,6 +149,10 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source Files\EBO.cpp" />
+    <ClCompile Include="Source Files\shaderClass.cpp" />
+    <ClCompile Include="Source Files\VAO.cpp" />
+    <ClCompile Include="Source Files\VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
