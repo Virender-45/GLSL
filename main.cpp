@@ -3,6 +3,11 @@
 #include <GLFW/glfw3.h>
 #include <math.h>
 
+#include "/Programming/GLSL/Header Files/EBO.h"
+#include "/Programming/GLSL/Header Files/shaderClass.h"
+#include "/Programming/GLSL/Header Files/VBO.h"
+#include "/Programming/GLSL/Header Files/VAO.h"
+
 
 int main() {
 	// Initialize GLFW
@@ -33,6 +38,8 @@ int main() {
 	// Set viewport size
 	glViewport(0, 0, 600, 600);
 
+	Shader shaderProgram("default.vert", "default.frag");
+
 	// Define the vertices of a triangle
 	GLfloat vertices[] = {
 		//for single triangle
@@ -50,49 +57,35 @@ int main() {
 		 0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f	//inner down
 	};
 
-	GLuint indices[] = {
+	GLfloat indices[] = {
 		0, 3, 5, //lower left triangle
 		3, 2, 4, //lower right triangle	
 		5 ,4, 1	//upper triangle
 	};
 
+	VAO VAO1;
+	VAO1.Bind();
 
-	// Create VAO (Vertex Array Object) and VBO (Vertex Buffer Object)
-	GLuint VAO, VBO, EBO;
+	VBO VBO1(vertices, sizeof(vertices));
+	EBO EBO1(indices, sizeof(indices));
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	// Bind the VAO
-	glBindVertexArray(VAO);
-
-	// Bind the VBO and copy the vertex data into it
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	// Define how vertex attributes are interpreted
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	// Unbind the VBO and VAO
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	// Set the background color
-	glClearColor(0.1f, 0.2f, 0.4f, 1.0f);
+	VAO1.LinkVBO(VBO1, 0);
+	VAO1.unbind();
+	VBO1.Unbind();
+	EBO1.Unbind();
+	
 
 	// Render loop
 	while (!glfwWindowShouldClose(window)) {
+		// Set the background color to a dark blue shade
+		glClearColor(0.1f, 0.2f, 0.4f, 1.0f);
+
 		// Clear the color buffer
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// Bind the VAO
-		glBindVertexArray(VAO);
+		shaderProgram.Activate();
+
+		VAO1.Bind();
 
 		// Draw the triangle
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -106,11 +99,11 @@ int main() {
 		glfwPollEvents();
 	}
 
-	// Cleanup: Delete buffers and the shader program
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
-	glDeleteProgram(shaderProgram);
+
+	VAO1.Delete();
+	VBO1.Delete();
+	EBO1.Delete();
+	shaderProgram.Delete();
 
 	// Destroy the window and terminate GLFW
 	glfwDestroyWindow(window);

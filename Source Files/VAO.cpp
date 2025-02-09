@@ -1,4 +1,4 @@
-#include "../Header Files/VAOr.h"
+#include "../Header Files/VAO.h"
 
 VAO::VAO() {
 	glGenVertexArrays(1, &ID);
