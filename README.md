@@ -21,7 +21,7 @@ If you call OpenGL functions before loading them, the program will crash.
 glViewport(0, 0, 600, 600);
 
 Defines the rendering area.
-If omitted, OpenGL might use a default value, but it’s good practice to specify it.
+If omitted, OpenGL might use a default value, but itâ€™s good practice to specify it.
 Setting and Clearing Background (glClearColor, glClear)
 
 Must be done after OpenGL has been initialized.
@@ -44,3 +44,4 @@ Yes, the order matters because each step depends on previous ones. Changing the 
 Crashes (e.g., calling OpenGL functions before initializing GLAD).
 Unresponsive window (e.g., missing event polling in the loop).
 Incorrect rendering (e.g., setting the viewport at the wrong time).
+started Creating new triangle
