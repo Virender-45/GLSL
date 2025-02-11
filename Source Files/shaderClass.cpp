@@ -1,4 +1,5 @@
 #include "/Programming/GLSL/Header Files/shaderClass.h"
+#include "shaderClass.h"
 
 Shader::Shader(const char* vertexFile, const char* fragmentFile) {
 	std::string vertexCode, fragmentCode;
