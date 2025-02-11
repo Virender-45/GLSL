@@ -67,7 +67,7 @@ int main() {
 	GLuint indices[] = {
 		0, 3, 5, //lower left triangle
 		3, 2, 4, //lower right triangle	
-		5 ,4, 1	//upper triangle
+		5 ,4, 1	//upper triangle 
 	};
 
 	// Create and compile the vertex shader
