@@ -10,9 +10,6 @@ const char* vertexShaderSource = "#version 330 core\n"
 "  gl_Position = vec4(aPos, 1.0);\n"
 "}\0";
 
-
-
-
 int main() {
 	// Initialize GLFW
 	glfwInit();
