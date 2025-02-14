@@ -33,7 +33,7 @@ int main() {
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
-		return -1;
+		return -10;
 	}
 
 	// Make the window the current OpenGL context
