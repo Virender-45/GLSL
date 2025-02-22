@@ -23,7 +23,6 @@ int main() {
 	// Initialize GLFW
 	glfwInit();
 
-
 	// Set OpenGL version to 3.3 (core profile)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
