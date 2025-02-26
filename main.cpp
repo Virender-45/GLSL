@@ -19,7 +19,8 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "}\n\0";
 
 
-int main() {
+int main()
+{
 	// Initialize GLFW
 	glfwInit();
 
